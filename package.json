@@ -1,0 +1,24 @@
+{
+  "name": "racquetjs",
+  "version": "0.0.1",
+  "description": "one more js framework",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grachpower/RacquetJS.git"
+  },
+  "keywords": [
+    "js",
+    "framework",
+    "racquet"
+  ],
+  "author": "Artyom Andreev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grachpower/RacquetJS/issues"
+  },
+  "homepage": "https://github.com/grachpower/RacquetJS#readme"
+}
