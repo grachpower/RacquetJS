@@ -4,7 +4,7 @@
   "description": "one more js framework",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start ./config/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,15 @@
   "bugs": {
     "url": "https://github.com/grachpower/RacquetJS/issues"
   },
-  "homepage": "https://github.com/grachpower/RacquetJS#readme"
+  "homepage": "https://github.com/grachpower/RacquetJS#readme",
+  "devDependencies": {
+    "jasmine": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-requirejs": "^1.1.0"
+  },
+  "dependencies": {
+    "typescript": "^2.8.1"
+  }
 }
