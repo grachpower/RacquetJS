@@ -1,4 +1,4 @@
-import { domHandler } from "./dom-handler";
+import { domHandler } from "./dom-handler.service";
 
 /**
  *

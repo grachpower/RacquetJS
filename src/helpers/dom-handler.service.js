@@ -1,4 +1,4 @@
-import { Component } from "../components/component";
+import { Component } from "../component/component";
 
 export const domHandler = (component) => {
     if (component instanceof Component) {

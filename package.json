@@ -1,6 +1,6 @@
 {
   "name": "racquetjs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "one more js framework",
   "main": "src/index.js",
   "scripts": {
