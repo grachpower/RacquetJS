@@ -1,4 +1,4 @@
-import { ComponentService } from "../helpers/component-service";
+import { ComponentService } from "../helpers/component.service";
 
 export class Component {
     constructor() {
