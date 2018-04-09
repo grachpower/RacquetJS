@@ -1,30 +1,17 @@
-import { ComponentService } from "../helpers/component.service";
+import { ComponentService } from '../helpers/component.service';
+import { ControlInterface } from './models/control.interface';
 
 export class Component {
+    private elementRef: HTMLElement = undefined;
+    private hash: string;
+    private componentService: ComponentService = new ComponentService();
+    private children: Component[] = [];
+    private controls: ControlInterface[] = [];
+
     constructor() {
-        this.elementRef = undefined;
-        this._componentService = new ComponentService();
-        this._componentService.addComponent(this);
+        this.componentService.addComponent(this);
 
-        this.hash = this._componentService.getComponentHash(this);
-
-        /**
-         * Contains children objects links
-         *
-         * @type {Array<Component>}
-         *
-         * @private
-         */
-        this._children = [];
-
-        /**
-         * Contains component controls name and hash
-         *
-         * @type {Array<{name: string, hash: string}>}
-         *
-         * @private
-         */
-        this._controls = [];
+        this.hash = this.componentService.getComponentHash(this);
     }
 
 
@@ -38,7 +25,7 @@ export class Component {
      *
      * @returns {string}
      */
-    createTemplate() {
+    protected createTemplate(): string {
         return '';
     }
 
@@ -48,7 +35,7 @@ export class Component {
      *
      * @returns {void}
      */
-    setHandlers() {
+    protected setHandlers(): void {
         //...
     }
 
@@ -58,7 +45,7 @@ export class Component {
      *
      * @returns {void}
      */
-    afterViewInit() {
+    protected afterViewInit(): void {
         //...
     }
 
@@ -72,11 +59,11 @@ export class Component {
      *
      * @returns {void}
      */
-    render() {
-        this._prerender();
+    public render() {
+        this.prerender();
 
         this.elementRef.innerHTML = this.createTemplate();
-        this._renderChildren();
+        this.renderChildren();
 
         this.setHandlers();
         this.afterViewInit();
@@ -89,8 +76,8 @@ export class Component {
      *
      * @returns {string}
      */
-    createChild(component) {
-        this._children.push(component);
+    protected createChild(component) {
+        this.children.push(component);
 
         return component._createElementRoot();
     }
@@ -112,12 +99,12 @@ export class Component {
      * @returns {string}
      */
     addControlByName(controlName) {
-        this._controls.push({
+        this.controls.push({
             name: controlName,
-            hash: `${this.hash}_ctrl_${this._controls.length}`,
+            hash: `${this.hash}_ctrl_${this.controls.length}`,
         });
 
-        return this._controls[this._controls.length - 1].hash;
+        return this.controls[this.controls.length - 1].hash;
     }
 
     /**
@@ -127,9 +114,9 @@ export class Component {
      *
      * @return {hash}
      */
-    getControlHashByName(controlName) {
-        const controlHash = this._controls
-            .find(({name}) => name === controlName)
+    getControlHashByName(controlName: string): string {
+        const controlHash = this.controls
+            .find((control: ControlInterface) => control.name === controlName)
             .hash;
 
         return `${controlHash}`;
@@ -147,7 +134,7 @@ export class Component {
      *
      * @returns {string}
      */
-    _createElementRoot() {
+    public createElementRoot() {
         return `<my-comp ${this.hash}></my-comp>`;
     }
 
@@ -158,7 +145,7 @@ export class Component {
      *
      * @returns {void}
      */
-    _attach() {
+    public attach() {
         this.elementRef = document.querySelector(`[${this.hash}]`);
     }
 
@@ -169,9 +156,9 @@ export class Component {
      *
      * @returns {void}
      */
-    _renderChildren() {
-        this._children.forEach(child => {
-            child._attach();
+    private renderChildren(): void {
+        this.children.forEach(child => {
+            child.attach();
             child.render();
         });
     }
@@ -183,9 +170,9 @@ export class Component {
      *
      * @returns {void}
      */
-    _prerender() {
-        this._refreshChildren();
-        this._refreshControls();
+    private prerender(): void {
+        this.refreshChildren();
+        this.refreshControls();
     }
 
     /**
@@ -195,8 +182,8 @@ export class Component {
      *
      * @returns {void}
      */
-    _refreshChildren() {
-        this._children = [];
+    private refreshChildren(): void {
+        this.children = [];
     }
 
     /**
@@ -206,7 +193,7 @@ export class Component {
      *
      * @returns {void}
      */
-    _refreshControls() {
-        this._controls = [];
+    private refreshControls(): void {
+        this.controls = [];
     }
 }
