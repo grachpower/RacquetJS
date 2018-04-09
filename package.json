@@ -1,10 +1,13 @@
 {
   "name": "racquetjs",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "one more js framework",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "outFile": "../built/main.js",
   "scripts": {
-    "test": "karma start ./config/karma.conf.js"
+    "test": "karma start ./config/karma.conf.js",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -14,6 +17,9 @@
     "js",
     "framework",
     "racquet"
+  ],
+  "files": [
+    "lib"
   ],
   "author": "Artyom Andreev",
   "license": "ISC",

@@ -1,19 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noEmit": true,
+    // "noEmit": true,
+    "declaration": true,
     "noEmitHelpers": true,
     "importHelpers": true,
     "strictNullChecks": false,
+    "outDir": "lib",
     "lib": [
       "dom",
-      "es6"
+      "es2015",
+      "es2017",
     ],
     "baseUrl": "./src",
     "typeRoots": [

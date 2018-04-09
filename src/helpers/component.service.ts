@@ -1,6 +1,6 @@
 import { Component } from '../component/component';
 
-let instance = null;
+let instance: any = null;
 
 export class ComponentService {
     private componentList: Component[];
@@ -16,15 +16,15 @@ export class ComponentService {
         return instance;
     }
 
-    public addComponent(component): void {
+    public addComponent(component: Component): void {
         this.componentList.push(component);
     }
 
-    public getComponentHash(component): string {
+    public getComponentHash(component: Component): string {
         return this.componentHashPrefix + this.componentList.indexOf(component);
     }
 
-    public removeComponent(component): void {
+    public removeComponent(component: Component): void {
         this.componentList = this.componentList.filter(elem => elem !== component);
     }
 }

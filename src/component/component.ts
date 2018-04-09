@@ -2,7 +2,7 @@ import { ComponentService } from '../helpers/component.service';
 import { ControlInterface } from './models/control.interface';
 
 export class Component {
-    private elementRef: HTMLElement = undefined;
+    private elementRef: Element = null;
     private hash: string;
     private componentService: ComponentService = new ComponentService();
     private children: Component[] = [];
@@ -59,7 +59,7 @@ export class Component {
      *
      * @returns {void}
      */
-    public render() {
+    public render(): void {
         this.prerender();
 
         this.elementRef.innerHTML = this.createTemplate();
@@ -76,10 +76,10 @@ export class Component {
      *
      * @returns {string}
      */
-    protected createChild(component) {
+    protected createChild(component: Component): string {
         this.children.push(component);
 
-        return component._createElementRoot();
+        return component.createElementRoot();
     }
 
     /**
@@ -87,7 +87,7 @@ export class Component {
      *
      * @returns {HTMLElement}
      */
-    getElementRef() {
+    getElementRef(): Element {
         return this.elementRef;
     }
 
@@ -98,7 +98,7 @@ export class Component {
      *
      * @returns {string}
      */
-    addControlByName(controlName) {
+    addControlByName(controlName: string): string {
         this.controls.push({
             name: controlName,
             hash: `${this.hash}_ctrl_${this.controls.length}`,
