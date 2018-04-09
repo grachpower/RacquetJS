@@ -1,6 +1,10 @@
+import { Component } from '../component/component';
+
 let instance = null;
 
 export class ComponentService {
+    private componentList: Component[];
+    private componentHashPrefix = 'c_';
 
     constructor(){
         if (!instance) {
@@ -8,20 +12,19 @@ export class ComponentService {
         }
 
         this.componentList = [];
-        this.componentHashPrefix = 'c_';
 
         return instance;
     }
 
-    addComponent(component) {
+    public addComponent(component): void {
         this.componentList.push(component);
     }
 
-    getComponentHash(component) {
+    public getComponentHash(component): string {
         return this.componentHashPrefix + this.componentList.indexOf(component);
     }
 
-    removeComponent(component) {
+    public removeComponent(component): void {
         this.componentList = this.componentList.filter(elem => elem !== component);
     }
 }

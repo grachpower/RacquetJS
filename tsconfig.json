@@ -20,10 +20,8 @@
       "node_modules/@types"
     ],
     "types": [
-      "hammerjs",
       "jasmine",
       "node",
-      "uglify-js",
       "webpack"
     ]
   },

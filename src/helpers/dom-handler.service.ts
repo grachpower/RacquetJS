@@ -1,8 +1,8 @@
 import { Component } from "../component/component";
 
-export const domHandler = (component) => {
+export const domHandler = (component: Component) => {
     if (component instanceof Component) {
-        component._attach();
+        component.attach();
         component.render();
     }
 };
