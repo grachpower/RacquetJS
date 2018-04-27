@@ -1,7 +1,7 @@
 import { ComponentService } from '../helpers/component.service';
 import { ControlInterface } from './models/control.interface';
 
-export class Component {
+export abstract class Component {
     private elementRef: Element = null;
     private hash: string;
     private componentService: ComponentService = new ComponentService();
@@ -27,7 +27,7 @@ export class Component {
      */
     protected createTemplate(): string {
         return '';
-    }
+    };
 
     /**
      * Method for setting event handlers here
@@ -35,9 +35,7 @@ export class Component {
      *
      * @returns {void}
      */
-    protected setHandlers(): void {
-        //...
-    }
+    protected abstract setHandlers(): void;
 
     /**
      * Default method for doing something after component view rendered
@@ -45,9 +43,7 @@ export class Component {
      *
      * @returns {void}
      */
-    protected afterViewInit(): void {
-        //...
-    }
+    protected abstract afterViewInit(): void;
 
 
     /**
