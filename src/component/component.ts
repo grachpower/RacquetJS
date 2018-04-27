@@ -57,12 +57,10 @@ export abstract class Component {
      */
     public render(): void {
         this.prerender();
-
         this.elementRef.innerHTML = this.createTemplate();
-        this.renderChildren();
-
-        this.setHandlers();
-        this.afterViewInit();
+        window.setTimeout(() => this.renderChildren(), 0);
+        window.setTimeout(() => this.setHandlers(), 0);
+        window.setTimeout(() => this.afterViewInit(), 0);
     }
 
     /**
@@ -154,8 +152,8 @@ export abstract class Component {
      */
     private renderChildren(): void {
         this.children.forEach(child => {
-            child.attach();
-            child.render();
+            window.setTimeout(() => child.attach(), 0);
+            window.setTimeout(() => child.render(), 0);
         });
     }
 
